@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GUESSX — Virtual Prediction Arena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="particles"></div><div class="scan"></div>
+<header><a class="brand" href="#"><span class="brandmark">G</span> GUESS<span>X</span></a>
+<nav><a href="#games">Games</a><a href="#leaderboard">Leaderboard</a><a href="#how">How it works</a></nav>
+<div class="head-right"><div class="coin"><span>◉</span><b id="coins">10,000</b></div><button class="avatar" id="profile">RY</button></div></header>
+
+<main>
+<section class="hero">
+<div class="pill"><i></i> VIRTUAL COINS • LIVE ARENA</div>
+<h1>Guess it.<br><span>Reveal it.</span></h1>
+<p>Pick a color. Pick a number. Trust your luck. Climb the leaderboard.</p>
+<button class="hero-btn" onclick="document.querySelector('#games').scrollIntoView({behavior:'smooth'})">ENTER THE ARENA <b>↘</b></button>
+<div class="hero-stats"><div><b id="players">127</b><small>PLAYERS ONLINE</small></div><div><b>∞</b><small>LUCK</small></div><div><b>10K</b><small>START COINS</small></div></div>
+</section>
+
+<section id="games" class="games">
+<div class="section-title"><span>01 / CHOOSE YOUR GAME</span><h2>Pick your <em>poison.</em></h2></div>
+<div class="game-grid">
+<article class="game-card color-card" onclick="openGame('color')"><div class="card-glow"></div><div class="game-no">01</div><div class="big-symbol">◈</div><h3>COLOR RUSH</h3><p>Yellow. Red. Blue. One survives.</p><button>PLAY <b>→</b></button></article>
+<article class="game-card number-card" onclick="openGame('number')"><div class="card-glow"></div><div class="game-no">02</div><div class="big-symbol">#</div><h3>NUMBER 1—10</h3><p>Pick one number. Defy probability.</p><button>PLAY <b>→</b></button></article>
+<article class="game-card bw-card" onclick="openGame('bw')"><div class="card-glow"></div><div class="game-no">03</div><div class="big-symbol">◐</div><h3>BLACK / WHITE</h3><p>Two sides. One reveal.</p><button>PLAY <b>→</b></button></article>
+</div>
+</section>
+
+<section id="leaderboard" class="leader">
+<div class="section-title"><span>02 / GLOBAL RANKING</span><h2>Hall of <em>luck.</em></h2></div>
+<div class="podium" id="podium"></div>
+<div class="board"><div class="board-head"><span>RANK</span><span>PLAYER</span><span>WINS</span><span>BALANCE</span></div><div id="rows"></div></div>
+</section>
+
+<section id="how" class="how"><div><span>03 / THE LOOP</span><h2>Simple rules.<br><em>Beautiful chaos.</em></h2></div>
+<div class="steps"><div><b>01</b><strong>Choose</strong><p>Pick a game and make a virtual coin prediction.</p></div><div><b>02</b><strong>Lock</strong><p>Your choice locks while the reveal animation starts.</p></div><div><b>03</b><strong>Reveal</strong><p>Watch the result unfold and see your balance change.</p></div></div></section>
+</main>
+
+<div class="modal" id="gameModal"><div class="game-modal">
+<button class="x" onclick="closeGame()">×</button><div class="modal-tag" id="gameTag">COLOR RUSH</div><h2 id="gameTitle">Pick a color</h2>
+<div class="betline"><span>BET</span><div><button onclick="changeBet(-100)">−</button><b id="bet">100</b><button onclick="changeBet(100)">+</button></div></div>
+<div id="choices" class="choices"></div>
+<button class="reveal-btn" id="reveal" onclick="reveal()">LOCK & REVEAL <span>↗</span></button>
+<div class="stage" id="stage"><div class="reel" id="reel">?</div><p id="stageText">Make your choice.</p></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body></html>
